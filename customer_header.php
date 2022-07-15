@@ -5,7 +5,7 @@
     <div class="nav_icon_ctn">
         <a href="customer_home.php" style="text-decoration:none;color:black;"><i class="fa-solid fa-house"></i></a>
         <a href="shop.php" style="text-decoration:none;color:black;"><i class="fa-solid fa-shop"></i></a>
-        <i class="fa-solid fa-id-card"></i>
+        <a href="about_us.php" style="text-decoration:none;color:black;"><i class="fa-solid fa-id-card"></i></a>
         <a href="contact.php" style="text-decoration:none;color:black;"><i class="fa-solid fa-phone"></i></a>
         <a href="order.php" style="text-decoration:none;color:black;"><i class="fa-solid fa-box-archive"></i></a>
     </div>
@@ -17,7 +17,7 @@
     </div>
     <?php 
         
-        $cart_quantity = mysqli_query($db,"SELECT * FROM `cart_tb` WHERE custm_id='$custm_id'") or die('query failed');
+        $cart_quantity = mysqli_query($db,"SELECT * FROM `cart_tb` WHERE custm_id='$user_id'") or die('query failed');
         $number_qty = mysqli_num_rows($cart_quantity);
     ?>
     <div class="cart" >

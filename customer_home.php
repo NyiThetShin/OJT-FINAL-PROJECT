@@ -2,7 +2,11 @@
 
 
 require_once "database.php";
-$custm_id = 1;
+session_start();
+$user_id = $_SESSION['user_id'];
+if(!isset($user_id)){
+    header('location:customer_login.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -124,7 +128,7 @@ if(isset($_POST['add'])){
     $name= $_POST['name'];
     $price = $_POST['price'];
     $quantity = $_POST['quantity'];
-    $select_book = mysqli_query($db,"SELECT * FROM `cart_tb` WHERE custm_id='$custom_id'  ") or die('query failed');
+    $select_book = mysqli_query($db,"SELECT * FROM `cart_tb` WHERE custm_id='$user_id'  ") or die('query failed');
     if(mysqli_num_rows($select_book) > 0){
         echo "your book is already added!";
     }else{

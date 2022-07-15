@@ -1,7 +1,11 @@
 <?php 
 
     require_once "database.php";
-    $custm_id = 1;
+   session_start();
+$user_id = $_SESSION['user_id'];
+if(!isset($user_id)){
+    header('location:customer_login.php');
+}
 
 
 ?>
@@ -55,12 +59,12 @@
             <div class="order_container">
                 <?php 
              
-             $select_order = mysqli_query($db,"SELECT * FROM `order_tb` WHERE custm_id = '$custm_id'") or die('query failed ');
+             $select_order = mysqli_query($db,"SELECT * FROM `order_tb` WHERE custm_id = '$user_id'") or die('query failed ');
              if(mysqli_num_rows($select_order) > 0){
                  while($fetch_order = mysqli_fetch_assoc($select_order)){
              ?>
                 <div class="card">
-                 <p>Placed On : <span><?php echo $fetch_order['order_date'] ?></span></p>
+                 <p>Placed On : <span><?php echo $fetch_order['Date'] ?></span></p>
                  <p>name : <span><?php echo $fetch_order['custm_name'] ?></span></p>
                  <p>number : <span><?php echo $fetch_order['custm_number'] ?></span></p>
                  <p>email : <span><?php echo $fetch_order['custm_email'] ?></span></p>

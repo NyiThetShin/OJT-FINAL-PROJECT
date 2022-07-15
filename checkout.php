@@ -1,7 +1,11 @@
 <?php 
 
     require_once "database.php";
-    $custm_id = 1;
+    session_start();
+    $user_id = $_SESSION['user_id'];
+if(!isset($user_id)){
+    header('location:customer_login.php');
+}
 
 
 ?>
@@ -111,11 +115,11 @@
                 $number = $_POST['number'];
                 $address = $_POST['address'];
                 $country = $_POST['country'];
-                $placed_on = date('d-M-Y');
+                $placed_on = $_POST['date'];
                 $cart_total= 0;
                  $cart_products[] = '';
 
-        $select_query = mysqli_query($db,"SELECT * FROM `cart_tb` WHERE custm_id = '$custm_id'") or die('query failed');
+        $select_query = mysqli_query($db,"SELECT * FROM `cart_tb` WHERE custm_id = '$user_id'") or die('query failed');
             if(mysqli_num_rows($select_query) > 0){
                 while($fetch_query = mysqli_fetch_assoc($select_query)){
                      $cart_products[] = $fetch_query['cart_name'];
@@ -125,16 +129,16 @@
                
         }
          $total_products = implode(',',$cart_products);
-         $order_query = mysqli_query($db,"SELECT * FROM `order_tb` WHERE custm_id = '$custm_id' AND custm_name='$name' AND custm_number = '$number' AND custm_email = '$email' AND custm_address = '$address' AND total_price ='$cart_total' AND order_date = '$placed_on'  ") or die('query failed');
+         $order_query = mysqli_query($db,"SELECT * FROM `order_tb` WHERE custm_id = '$user_id' AND custm_name='$name' AND custm_number = '$number' AND custm_email = '$email' AND custm_address = '$address' AND total_price ='$cart_total' AND Date = '$placed_on'  ") or die('query failed');
                 if($cart_total == 0){
                     echo "there haven\'t any item";
                 }else{
                     if(mysqli_num_rows($order_query) > 0){
                          echo  'your order is already have!';
                      }else{
-                        mysqli_query($db,"INSERT INTO `order_tb` (custm_id, custm_name, custm_number, custm_email, custm_address,order_qty, total_price, order_date) VALUES ('$custm_id' , '$name','$number','$email','$address','$total_products','$cart_total','$placed_on')") or die('query failed');
+                        mysqli_query($db,"INSERT INTO `order_tb` (custm_id, custm_name, custm_number, custm_email, custm_address,order_qty, total_price, Date) VALUES ('$user_id' , '$name','$number','$email','$address','$total_products','$cart_total','$placed_on')") or die('query failed');
                         echo  "your order information is successfully !";
-                        mysqli_query($db,"DELETE FROM `cart_tb` WHERE custm_id = '$custm_id'");
+                        mysqli_query($db,"DELETE FROM `cart_tb` WHERE custm_id = '$user_id'");
                     }
                 }
             }
@@ -157,7 +161,7 @@
         <div class="checkout_container">
             <?php 
                  $grand_total = 0;
-                  $select_cart = mysqli_query($db,"SELECT * FROM  `cart_tb` WHERE custm_id = '$custm_id'") or die('query failed');
+                  $select_cart = mysqli_query($db,"SELECT * FROM  `cart_tb` WHERE custm_id = '$user_id'") or die('query failed');
                    if(mysqli_num_rows($select_cart) > 0){
                    while($fetch_cart = mysqli_fetch_assoc($select_cart)){
                        $total_price = ($fetch_cart['cart_price'] * $fetch_cart['cart_qty']);
@@ -193,6 +197,8 @@
                 
                   <span>your city:</span><br>
                 <input type="text" name="city" placeholder="Enter your city" required><br>
+                <span>date</span><br>
+                <input type="date" name ="date" placeholder="date.." required>
             </div>
             <div class="two_form">
                 <span>your number:</span><br>
@@ -208,7 +214,8 @@
                 <input type="text" name="address" placeholder="e.g. street name"  required><br>
                 <span>your country:</span><br>
                 <input type="text" name="country" placeholder="e.g. myanmar"  required><br>
-            </div>
+                
+            </div> 
             <button class="checkout_btn" name="checkout">Checkout</button>
         </form>
     </section>

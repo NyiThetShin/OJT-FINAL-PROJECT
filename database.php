@@ -107,6 +107,16 @@ if(!$result6) {
 }
 
 
+
+
+
+
+
+
+
+
+
+
 $order = "CREATE TABLE IF NOT EXISTS  order_tb(
 
 
@@ -120,7 +130,7 @@ total_products VARCHAR (225),
 total_price VARCHAR (225),
 cart_session_id VARCHAR (225),
 confirm_payment VARCHAR (225),
-order_date DATETIME,
+order_date DATE,
 PRIMARY KEY ( order_id )
 
 
@@ -131,6 +141,30 @@ $result5 = mysqli_query($db,$order) or die("query failed");
 if(!$result5 ) {
     echo "database is not success for create!";
 }
+
+
+?>
+
+<?php 
+
+
+$regsiter = "CREATE TABLE IF NOT EXISTS register (
+
+    Id INT NOT NULL AUTO_INCREMENT,
+    Name VARCHAR (225),
+    Email VARCHAR (225),
+    Password VARCHAR (225),
+    PRIMARY KEY (Id)
+
+
+
+)";
+$result7 = mysqli_query($db,$regsiter) or die ('query failed');
+if(!$result7) {
+    echo "database is not success for create!";
+}
+
+
 
 
 ?>

@@ -1,7 +1,11 @@
 <?php 
 
 require_once "database.php";
-$custm_id = 1;
+   session_start();
+$user_id = $_SESSION['user_id'];
+if(!isset($user_id)){
+    header('location:customer_login.php');
+}
 
 
 ?>
@@ -89,7 +93,7 @@ $custm_id = 1;
                         <p><?php echo $fetch_product['pd_price']?></p>
                        
                         <input type="number" value="1" min="1" class="num_input" name="quantity">
-                         <button class="detail" name="detail">Detail</button>
+                         <button class="detail" name="detail"><a href="detail.php?detail=<?php  echo $fetch_product['pd_id']?>" style="text-decoration:none;color:black;">Detail</a></button>
                         <button class="add_cart" name="add">Add Cart</button>
                        
                     </form>

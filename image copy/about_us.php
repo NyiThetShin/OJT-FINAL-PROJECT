@@ -1,10 +1,6 @@
 <?php  
 require_once "database.php";
-    session_start();
-$user_id = $_SESSION['user_id'];
-if(!isset($user_id)){
-    header('location:customer_login.php');
-}
+ $custm_id = 1;
 
 ?>
 
@@ -99,9 +95,7 @@ if(!isset($user_id)){
     width: 200px;
     padding:5px;
     text-align: center;
-    border:1px solid black;
-    border-radius:5px;
-    box-shadow:2px 2px 2px black;
+    mari
 }
 .box img {
     width: 100px;
@@ -117,80 +111,6 @@ if(!isset($user_id)){
     font-size: 20px;
     font-weight: 500;
 }
-.box-container_two{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    padding:20px;
-}
-.box_two{
-    width: 300px;
-    text-align: center;
-    border:1px solid black;
-    box-shadow: 2px 2px 2px black;
-    padding:5px;
-     position: relative;
-     overflow:hidden;
-}
-.box_two img {
-    width: 80%;
-    height: 200px;
-    margin-bottom: 10px;
-}
-.share{
-    width:50px;
-    height: 50%;
-    position: absolute;
-    top: 1rem;
-    left: -4rem;
-    transition:all 1s ease;
-}
-.box_two:hover .share{
-    left:0.5rem;
-    top:1rem;
-}
-.share p{
-    width:100%;
-    padding: 10px 0;
-    border-radius: 50%;
-    border:1px solid black;
-    margin-bottom:5px;
-    transition:all 1s ease;
-}
-.share p:hover{
-    background-color:purple;
-    color:white;
-}
-   /* footer start  */
-    .footer{
-            width: 90%;
-            margin: 0 auto;
-            height: 20vh;
-            border: 1px solid black;
-            display:flex;
-            flex-direction: column;
-            jsutify-content:center;
-            align-items: center;
-    }
-    
-    .icon_container{
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        margin-top:20px
-    }
-    .icon_container i{
-        font-size: 25px;
-        margin-right: 20px;
-    }
-    .copy_right{
-    width: 100%;
-    text-align: center;
-    margin-top:10px;
-    font-size:20px;
-}
-     /* footer end  */
     </style>
 </head>
 <body>
@@ -212,27 +132,27 @@ if(!isset($user_id)){
         <h1>CLIENT'S VIEW</h1>
         <div class="box-container">
             <div class="box">
-                <img src="./image/pic-1.png" alt="">
+                <img src="pic-1.png" alt="">
                 <p class="text">Lorem ipsum dolor sit amet.</p>
                 <p>Alume</p>
             </div>
              <div class="box">
-                <img src="./image/pic-2.png" alt="">
+                <img src="pic-2.png" alt="">
                 <p class="text">Lorem ipsum dolor sit amet.</p>
                 <p>Alex</p>
             </div>
              <div class="box">
-                <img src="./image/pic-3.png" alt="">
+                <img src="pic-3.png" alt="">
                 <p class="text">Lorem ipsum dolor sit amet.</p>
                 <p>Bruno</p>
             </div>
              <div class="box">
-                <img src="./image/pic-4.png" alt="">
+                <img src="pic-4.png" alt="">
                 <p class="text">Lorem ipsum dolor sit amet.</p>
                 <p>Cike</p>
             </div>
              <div class="box">
-                <img src="./image/pic-5.png" alt="">
+                <img src="pic-5.png" alt="">
                 <p class="text">Lorem ipsum dolor sit amet.</p>
                 <p>Mile</p>
             </div>
@@ -243,7 +163,7 @@ if(!isset($user_id)){
         <h1>GREATE AUTHORS</h1>
         <div class="box-container_two">
             <div class="box_two">
-                <img src="./image/author-1.jpg" alt="">
+                <img src="author-1.jpg" alt="">
                 <p>Authors Aple</p>
                 <div class="share">
                     <p>FB</p>
@@ -252,7 +172,7 @@ if(!isset($user_id)){
                 </div>
             </div>
             <div class="box_two">
-                <img src="./image/author-2.jpg" alt="">
+                <img src="author-2.jpg" alt="">
                 <p>Alex</p>
                 <div class="share">
                     <p>FB</p>
@@ -261,7 +181,7 @@ if(!isset($user_id)){
                 </div>
             </div>
             <div class="box_two">
-                <img src="./image/author-3.jpg" alt="">
+                <img src="author-3.jpg" alt="">
                 <p>Luke</p>
                 <div class="share">
                     <p>FB</p>
@@ -270,7 +190,7 @@ if(!isset($user_id)){
                 </div>
             </div>
             <div class="box_two">
-                <img src="./image/author-4.jpg" alt="">
+                <img src="author-4.jpg" alt="">
                 <p>Desi</p>
                 <div class="share">
                     <p>FB</p>
@@ -282,8 +202,5 @@ if(!isset($user_id)){
         </div>
         
     </section>
-
-
-    <?php  require_once "footer.php" ?>
 </body>
 </html>
