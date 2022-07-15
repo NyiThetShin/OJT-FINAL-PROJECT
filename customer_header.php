@@ -1,3 +1,5 @@
+
+
 <section class="user_header_ctn">
     <div class="logo">
         Logo
@@ -13,7 +15,7 @@
         <input type="search" placeholder="Search book..">
     </div>
     <div class="profile">
-        <i class="fa-solid fa-user"></i>
+        <a href="logout.php" onclick="return confirm('are you sure you want to logout')"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
     </div>
     <?php 
         
